@@ -1,2 +1,1 @@
-# prod-redux-auto-uglify
-sample project for issue with react create app redux auto 
+this project was created to show issue with create react app and redux auto
