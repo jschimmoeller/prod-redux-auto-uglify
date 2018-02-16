@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { auto, reducers } from 'redux-auto';
+import actions, { auto, reducers } from 'redux-auto';
 const webpackModules = require.context("./store", true, /\.js$/);
 
 const middleware = applyMiddleware(auto(webpackModules, webpackModules.keys()))
 const store = createStore(combineReducers(reducers), middleware );
+
+setTimeout(()=>{
+  console.log('calling action');
+  actions.app.getFoo({"newStuff": "this is new stuff"})
+}, 1000)
  console.log('the Store by redux-auto:', store.getState())
 class App extends Component {
   render() {
